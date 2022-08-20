@@ -10,24 +10,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import seol.study.stock.domain.StockWithVersion;
-import seol.study.stock.facade.OptimisticLockStockFacade;
-import seol.study.stock.repository.StockWithVersionRepository;
+import seol.study.stock.domain.Stock;
+import seol.study.stock.facade.NamedLockStockFacade;
+import seol.study.stock.repository.NamedLockRepository;
 
 @SpringBootTest
-@DisplayName("재고 OptimisticLock 서비스")
-class OptimisticLockStockServiceTest {
+@DisplayName("재고 NamedLock 서비스")
+class NamedLockStockServiceTest {
 
 	@Autowired
-	private OptimisticLockStockFacade stockFacade;
+	private NamedLockStockFacade stockFacade;
 	@Autowired
-	private StockWithVersionRepository stockRepository;
+	private NamedLockRepository stockRepository;
 
-	private StockWithVersion stock;
+	private Stock stock;
 
 	@BeforeEach
 	public void before() {
-		stock = new StockWithVersion(1L, 100L);
+		stock = new Stock(1L, 100L);
 		stockRepository.saveAndFlush(stock);
 	}
 
