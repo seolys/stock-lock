@@ -14,11 +14,11 @@ import seol.study.stock.domain.Stock;
 import seol.study.stock.repository.StockRepository;
 
 @SpringBootTest
-@DisplayName("재고 SpinLock 서비스")
-class LettuceSpinLockStockFacadeTest {
+@DisplayName("재고 Redis Distributed Lock 서비스(Redisson)")
+class RedisDistributedLockStockFacadeTest {
 
 	@Autowired
-	private RedisSpinLockStockFacade stockFacade;
+	private RedisDistributedLockStockFacade stockFacade;
 	@Autowired
 	private StockRepository stockRepository;
 
@@ -58,5 +58,4 @@ class LettuceSpinLockStockFacadeTest {
 		final var findStock = stockRepository.findById(stock.getId()).orElseThrow();
 		assertThat(findStock.getQuantity()).isEqualTo(0L);
 	}
-
 }
